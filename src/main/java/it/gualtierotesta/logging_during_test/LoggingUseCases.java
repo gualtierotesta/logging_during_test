@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Gualtiero Testa <www.gualtierotesta.it>.
+ * Copyright 2015 Gualtiero Testa.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,26 @@
  */
 package it.gualtierotesta.logging_during_test;
 
+import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A very simple class
+ * Logging show cases
  *
- * @author Gualtiero Testa <www.gualtierotesta.it>
+ * @author gualtiero
  */
-public class AClass {
+public class LoggingUseCases {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AClass.class);
+    private MyDao dao = new MyDao();
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingUseCases.class);
 
-    public AClass() {
-        LOGGER.debug("Constructor invoked");
-    }
-
-    public String aMethod(int value) {
-        LOGGER.info("Invoked method with argument {}", value);
-        return "The value is " + value;
+    void case1UnexpectedException(String pCondition) {
+        try {
+            int countRecords = dao.countRecords(pCondition);
+            // do something with countRecords
+        } catch (SQLException ex) {
+            LOGGER.error("Record counts failed - condition=[{}]", pCondition, ex);
+        }
     }
 }

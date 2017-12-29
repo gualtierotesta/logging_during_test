@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Gualtiero Testa <www.gualtierotesta.it>.
+ * Copyright 2015 Gualtiero Testa.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,16 @@
  */
 package it.gualtierotesta.logging_during_test;
 
-import org.junit.Assert;
-import org.junit.Test;
+import java.sql.SQLException;
 
 /**
- * Unit test
+ * Dummy DAO
  *
- * @author Gualtiero Testa <www.gualtierotesta.it>
+ * @author gualtiero
  */
-public class AClassTest {
+public class MyDao {
 
-    @Test
-    public void testAMethod() {
-        AClass sut = new AClass();
-        String res = sut.aMethod(4);
-        Assert.assertEquals("The value is 4", res);
+    int countRecords(String pCondition) throws SQLException {
+        throw new SQLException("SQL Syntax error");
     }
-
 }

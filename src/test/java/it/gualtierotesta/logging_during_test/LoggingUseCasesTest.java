@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Gualtiero Testa <www.gualtierotesta.it>.
+ * Copyright 2015 Gualtiero Testa.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,15 +21,22 @@ import org.junit.Test;
 /**
  * Unit test
  *
- * @author Gualtiero Testa <www.gualtierotesta.it>
+ * @author gualtiero
  */
-public class AClassTest {
+public class LoggingUseCasesTest {
 
+    /**
+     * Test of case1UnexpectedException method, of class LoggingUseCases.
+     */
     @Test
-    public void testAMethod() {
-        AClass sut = new AClass();
-        String res = sut.aMethod(4);
-        Assert.assertEquals("The value is 4", res);
+    public void testCase1UnexpectedException() {
+        // given
+        String condition = "age<25";
+        LoggingUseCases sut = new LoggingUseCases();
+        // when
+        sut.case1UnexpectedException(condition);
+        // then
+        Assert.assertTrue(true);
     }
 
 }
